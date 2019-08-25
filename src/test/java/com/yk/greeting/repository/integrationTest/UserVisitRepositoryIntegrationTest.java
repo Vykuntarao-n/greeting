@@ -1,4 +1,4 @@
-package com.yk.greeting.repository;
+package com.yk.greeting.repository.integrationTest;
 
 
 
@@ -21,6 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.yk.greeting.entity.User;
 import com.yk.greeting.entity.UserVisit;
 import com.yk.greeting.projection.VisitorProjection;
+import com.yk.greeting.repository.UserVisitRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
