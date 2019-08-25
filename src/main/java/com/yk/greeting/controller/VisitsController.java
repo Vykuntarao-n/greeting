@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yk.greeting.model.VisitSummary;
-import com.yk.greeting.service.UserVisitService;
+import com.yk.greeting.service.UserVisitAuditService;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 public class VisitsController  {
 	@Autowired
-	UserVisitService userVisitService;
+	UserVisitAuditService userVisitService;
 	
 	/**
 	 * Returns all the statistics of the user Visits

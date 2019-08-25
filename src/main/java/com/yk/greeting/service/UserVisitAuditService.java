@@ -15,9 +15,9 @@ import com.yk.greeting.repository.UserRepository;
 import com.yk.greeting.repository.UserVisitRepository;
 
 @Service
-public class UserVisitService {
+public class UserVisitAuditService {
 
-	private static final Logger log = LoggerFactory.getLogger(UserVisitService.class);
+	private static final Logger log = LoggerFactory.getLogger(UserVisitAuditService.class);
 
 	@Autowired
 	UserRepository userRepository;
@@ -33,7 +33,7 @@ public class UserVisitService {
 	 * @param lastName
 	 * @return
 	 */
-	public boolean createUserVisit(UserRequestDTO userReq) {
+	public boolean manageUserVisit(UserRequestDTO userReq) {
 		boolean isUserCreated = false ; 
 		try {
 			Optional<User> user = userRepository.findByFirstNameAndLastNameAllIgnoreCase(userReq.getFirstName(), userReq.getLastName());
@@ -50,6 +50,8 @@ public class UserVisitService {
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
+		System.out.println("isUserCreated" + isUserCreated);
+		
 		return isUserCreated ; 
 	}
 
