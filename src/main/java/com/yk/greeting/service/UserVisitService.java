@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.yk.greeting.entity.User;
 import com.yk.greeting.entity.UserVisit;
-import com.yk.greeting.entity.Visits;
+import com.yk.greeting.model.UserRequestDTO;
+import com.yk.greeting.model.VisitSummary;
 import com.yk.greeting.repository.UserRepository;
 import com.yk.greeting.repository.UserVisitRepository;
 
@@ -32,29 +33,32 @@ public class UserVisitService {
 	 * @param lastName
 	 * @return
 	 */
-	public boolean createUserVisit(String firstName, String lastName) {
-		Optional<User> user = userRepository.findByFirstNameAndLastNameAllIgnoreCase(firstName, lastName);
-		if (user.isPresent()) {
-			log.debug("User - " + user.get());
+	public boolean createUserVisit(UserRequestDTO userReq) {
+		boolean isUserCreated = false ; 
+		try {
+			Optional<User> user = userRepository.findByFirstNameAndLastNameAllIgnoreCase(userReq.getFirstName(), userReq.getLastName());
 			UserVisit userVisit = new UserVisit();
-			userVisit.setUser(user.get());
+			if (user.isPresent()) {
+				log.debug("User - " + user.get());
+				userVisit.setUser(user.get());
+				isUserCreated =  true;
+			} else {
+				userVisit.setUser(new User(userReq.getFirstName(), userReq.getLastName()));
+				isUserCreated =  false;
+			}
 			userVisitRepository.save(userVisit);
-			return true;
-		} else {
-			UserVisit userVisit = new UserVisit();
-			userVisit.setUser(new User(firstName, lastName));
-			userVisitRepository.save(userVisit);
-			return false;
+		}catch (Exception e) {
+			// TODO: handle exception
 		}
-
+		return isUserCreated ; 
 	}
 
 	/**
 	 * Returns visits Statistics     
 	 * @return Visits
 	 */
-	public Visits getVisits() {
-		Visits visits = new Visits();
+	public VisitSummary getVisits() {
+		VisitSummary visits = new VisitSummary();
 		visits.setTotalVisits(userVisitRepository.count());
 		visits.setVisitorFirstNames(userVisitRepository.findDistinctByFirstName());
 		visits.setVisitorLastNames(userVisitRepository.findDistinctByLastName());

@@ -15,7 +15,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.yk.greeting.api.GreetingController;
 import com.yk.greeting.model.UserRequestDTO;
 import com.yk.greeting.service.UserService;
 import com.yk.greeting.service.UserVisitService;
@@ -40,8 +39,9 @@ public class GreetingControllerIntegrationTest {
 	@Before
 	public void setUp() {
 		UserRequestDTO user = new UserRequestDTO("FirstName", "LastName");
-		when(userVisitService.createUserVisit(user.getFirstName(), user.getLastName())).thenReturn(true);
-		when(userVisitService.createUserVisit(user.getFirstName(), "")).thenReturn(false);
+		when(userVisitService.createUserVisit(user)).thenReturn(true);
+		UserRequestDTO user1 = new UserRequestDTO("FirstName", "");
+		when(userVisitService.createUserVisit(user1)).thenReturn(false);
 	}
 
 	@Test
