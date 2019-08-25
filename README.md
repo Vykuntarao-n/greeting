@@ -4,6 +4,9 @@ When user send the request to the greeting service greets the user with a welcom
 
 ### 
 
+Run the Greeting Application
+
+
 * [Changing the Base URI]
 Refer the MvcConfig to customize/redirect the base url to application specific URL 
 ** (https://spring.io/guides/gs/securing-web/)
