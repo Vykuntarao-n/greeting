@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS USER_VISIT;
+DROP TABLE IF EXISTS USER;
+
+CREATE TABLE USER (
+  user_id INT AUTO_INCREMENT  PRIMARY KEY,
+  first_name VARCHAR(250) NOT NULL,
+  last_name VARCHAR(250) NOT NULL ,
+  unique (first_name, last_name ) 
+);
+
+CREATE TABLE USER_VISIT (
+  user_visit_id INT AUTO_INCREMENT  PRIMARY KEY,
+  user_id INT , 
+  created_dt TIMESTAMP  DEFAULT NOW(), 
+  FOREIGN KEY(user_id) REFERENCES USER
+  
+);
