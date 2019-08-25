@@ -16,8 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.yk.greeting.model.UserRequestDTO;
-import com.yk.greeting.service.UserService;
-import com.yk.greeting.service.UserVisitService;
+import com.yk.greeting.service.UserVisitAuditService;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(GreetingController.class)
@@ -27,10 +26,7 @@ public class GreetingControllerIntegrationTest {
 	private MockMvc mockMvc;
 
 	@MockBean
-	UserService userService;
-
-	@MockBean
-	UserVisitService userVisitService;
+	UserVisitAuditService userVisitService;
 
 	/**
 	 * 
@@ -39,9 +35,10 @@ public class GreetingControllerIntegrationTest {
 	@Before
 	public void setUp() {
 		UserRequestDTO user = new UserRequestDTO("FirstName", "LastName");
-		when(userVisitService.createUserVisit(user)).thenReturn(true);
+		when(userVisitService.manageUserVisit(user)).thenReturn(true);
+
 		UserRequestDTO user1 = new UserRequestDTO("FirstName", "");
-		when(userVisitService.createUserVisit(user1)).thenReturn(false);
+		when(userVisitService.manageUserVisit(user1)).thenReturn(false);
 	}
 
 	@Test
@@ -67,7 +64,7 @@ public class GreetingControllerIntegrationTest {
 				.perform(post("/greeting").contentType(TestUtil.APPLICATION_JSON_UTF8)
 						.content(TestUtil.convertObjectToJsonBytes(user)))
 				.andExpect(status().isOk())
-				.andExpect(content().string(containsString("Welcome, back FirstName LastName")));
+				.andExpect(content().string(containsString("Welcome, back FirstName LastName !")));
 	}
 
 	/**

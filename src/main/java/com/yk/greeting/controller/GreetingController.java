@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.yk.greeting.model.Greeting;
 import com.yk.greeting.model.UserRequestDTO;
-import com.yk.greeting.service.UserVisitService;
+import com.yk.greeting.service.UserVisitAuditService;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -28,7 +28,7 @@ public class GreetingController{
 	private static final Logger log = LoggerFactory.getLogger(GreetingController.class);
 
 	@Autowired
-	UserVisitService userVisitService;
+	UserVisitAuditService userVisitService;
 
 	/**
 	 * This will greet the user with the Welcome message with the name of the user
@@ -46,11 +46,9 @@ public class GreetingController{
 	public Greeting greeting(@Valid @RequestBody UserRequestDTO user) {
 		boolean isUserExits = false;
 		if (user != null && (!user.getFirstName().isEmpty() || !user.getLastName().isEmpty())) {
-			String firstName = user.getFirstName();
-			String lastName = user.getLastName();
 			log.debug("[firstName] : " + user.getFirstName() + " [lastName] :  " + user.getLastName());
-			isUserExits = userVisitService.createUserVisit(user);
-			return new Greeting(isUserExits, firstName, lastName);
+			isUserExits = userVisitService.manageUserVisit(user);
+			return new Greeting(isUserExits, user.getFirstName(), user.getLastName());
 		} else {
 			return new Greeting();
 		}

@@ -31,13 +31,13 @@ public class UserVisitServiceIntegrationTest {
 	static class UserVisitServiceTestContextConfiguration {
 
 		@Bean
-		public UserVisitService userVisitServiceService() {
-			return new UserVisitService();
+		public UserVisitAuditService userVisitServiceService() {
+			return new UserVisitAuditService();
 		}
 	}
 
 	@Autowired
-	UserVisitService userVisitService;
+	UserVisitAuditService userVisitService;
 
 	@MockBean
 	private UserVisitRepository userVisitRepository;
