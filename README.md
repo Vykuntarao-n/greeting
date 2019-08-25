@@ -5,6 +5,7 @@ When user send the request to the greeting service greets the user with a welcom
 ### 
 
 Run the Greeting Application
+
 java jara <<jar file name>>
 
 * [Changing the Base URI]
