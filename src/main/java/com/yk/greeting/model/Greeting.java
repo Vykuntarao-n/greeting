@@ -1,4 +1,4 @@
-package com.yk.greeting.config;
+package com.yk.greeting.model;
 
 import com.yk.greeting.entity.User;
 
