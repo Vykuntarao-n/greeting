@@ -24,16 +24,25 @@ There are two APIs
 * /greeting - Accept the POST request with UserRequestDTO as parameter. Persists the User if not exists and add UserVisit Entry.
 * /visits - return the all the statistics of the User Visits.
 
+Database
+
+* Data will be persisted in the H2 in memory database/
+* To Access the H2 console http://localhost:8080/h2. Change the port to application runnning port. 
+* Two tables are created USER and USER_VISIT, one to many relaionship on user_id column. 
+
+Persisting 
+
+* Spring Data with JPA used to persist the data. 
+
+* [JPQL Group By] (https://www.objectdb.com/java/jpa/query/jpql/group#GROUP_BY_as_DISTINCT_no_Aggregates)
 
 
 
+Changing the Base URI
 
-* [Changing the Base URI]
-Refer the MvcConfig to customize/redirect the base url to application specific URL 
-** (https://spring.io/guides/gs/securing-web/)
+* [Refer the MvcConfig to customize/redirect the base url to application specific URL](https://spring.io/guides/gs/securing-web/)
 
-JPQL Group By
-(https://www.objectdb.com/java/jpa/query/jpql/group#GROUP_BY_as_DISTINCT_no_Aggregates)
+
 
 ### Reference Documentation
 For further reference, please consider the following sections:
