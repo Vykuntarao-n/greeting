@@ -1,4 +1,4 @@
-package com.yk.greeting.service;
+package com.yk.greeting.service.integrationTest;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -23,6 +23,7 @@ import com.yk.greeting.model.VisitSummary;
 import com.yk.greeting.projection.VisitorProjection;
 import com.yk.greeting.repository.UserRepository;
 import com.yk.greeting.repository.UserVisitRepository;
+import com.yk.greeting.service.UserVisitAuditService;
 
 @RunWith(SpringRunner.class)
 public class UserVisitServiceIntegrationTest {
