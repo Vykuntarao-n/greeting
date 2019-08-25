@@ -1,4 +1,4 @@
-package com.yk.greeting.entity;
+package com.yk.greeting.model;
 
 import java.util.List;
 import java.util.Set;
@@ -9,7 +9,7 @@ import com.yk.greeting.projection.VisitorProjection;
  * @author Vykuntarao
  *
  */
-public class Visits {
+public class VisitSummary {
 	private long totalVisits;
 	private Set<String> visitorFirstNames;
 	private Set<String> visitorLastNames;

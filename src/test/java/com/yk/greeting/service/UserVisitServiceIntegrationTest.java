@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.yk.greeting.entity.User;
-import com.yk.greeting.entity.Visits;
+import com.yk.greeting.model.VisitSummary;
 import com.yk.greeting.projection.VisitorProjection;
 import com.yk.greeting.repository.UserRepository;
 import com.yk.greeting.repository.UserVisitRepository;
@@ -48,9 +48,9 @@ public class UserVisitServiceIntegrationTest {
 	 * 
 	 * @return
 	 */
-	private Visits getVisits() {
+	private VisitSummary getVisits() {
 		User user = new User("FirstName", "LastName");
-		Visits visits = new Visits();
+		VisitSummary visits = new VisitSummary();
 		visits.setTotalVisits(1);
 		Set<String> fisrtName = new HashSet<String>();
 		fisrtName.add(user.getFirstName());
@@ -91,7 +91,7 @@ public class UserVisitServiceIntegrationTest {
 	 */
 	@Before
 	public void setUp() {
-		Visits visits = getVisits();
+		VisitSummary visits = getVisits();
 		Mockito.when(userVisitRepository.count()).thenReturn(visits.getTotalVisits());
 		Mockito.when(userVisitRepository.findDistinctByFirstName()).thenReturn(visits.getVisitorFirstNames());
 		Mockito.when(userVisitRepository.findDistinctByLastName()).thenReturn(visits.getVisitorLastNames());
@@ -103,7 +103,7 @@ public class UserVisitServiceIntegrationTest {
 	 */
 	@Test
 	public void whenfindByFirstNameAndLastNameAllIgnoreCase_thenReturnOptionalUser() {
-		Visits visitsService = userVisitService.getVisits();
+		VisitSummary visitsService = userVisitService.getVisits();
 		assertThat(visitsService.getTotalVisits(), is(getVisits().getTotalVisits()));
 		assertThat(visitsService.getVisitorFirstNames(), is(getVisits().getVisitorFirstNames()));
 		assertThat(visitsService.getVisitorLastNames(), is(getVisits().getVisitorLastNames()));
