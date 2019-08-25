@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yk.greeting.config.Greeting;
+import com.yk.greeting.model.Greeting;
 import com.yk.greeting.model.UserRequestDTO;
 import com.yk.greeting.service.UserVisitService;
 
