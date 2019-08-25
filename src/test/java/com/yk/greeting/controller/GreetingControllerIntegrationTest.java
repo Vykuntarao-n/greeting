@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,44 +27,19 @@ public class GreetingControllerIntegrationTest {
 	@MockBean
 	UserVisitAuditService userVisitService;
 
-	/**
-	 * 
-	 * @throws Exception
-	 */
-	@Before
-	public void setUp() {
-		UserRequestDTO user = new UserRequestDTO("FirstName", "LastName");
-		when(userVisitService.manageUserVisit(user)).thenReturn(true);
-
-		UserRequestDTO user1 = new UserRequestDTO("FirstName", "");
-		when(userVisitService.manageUserVisit(user1)).thenReturn(false);
-	}
+	
 
 	@Test
 	public void greeting_whenNoUser_returnWelcome() throws Exception {
 		UserRequestDTO user1 = new UserRequestDTO("FirstName", "");
-
+		when(userVisitService.manageUserVisit(user1)).thenReturn(false);
 		this.mockMvc
 				.perform(post("/greeting").contentType(TestUtil.APPLICATION_JSON_UTF8)
 						.content(TestUtil.convertObjectToJsonBytes(user1)))
-				.andExpect(status().isOk()).andExpect(content().string(containsString("Welcome,  FirstName")));
+				.andExpect(status().isOk()).andExpect(content().string(containsString("Welcome FirstName")));
 
 	}
 
-	/**
-	 * 
-	 * @throws Exception
-	 */
-	@Test
-	public void greeting_whenExistingUser_returnWelcomeBack() throws Exception {
-		UserRequestDTO user = new UserRequestDTO("FirstName", "LastName");
-
-		this.mockMvc
-				.perform(post("/greeting").contentType(TestUtil.APPLICATION_JSON_UTF8)
-						.content(TestUtil.convertObjectToJsonBytes(user)))
-				.andExpect(status().isOk())
-				.andExpect(content().string(containsString("Welcome, back FirstName LastName !")));
-	}
 
 	/**
 	 * 
@@ -74,10 +48,11 @@ public class GreetingControllerIntegrationTest {
 	@Test
 	public void greeting_whenEmpty_returnWelcome() throws Exception {
 		UserRequestDTO user = new UserRequestDTO("", "");
+		when(userVisitService.manageUserVisit(user)).thenReturn(false);
 		this.mockMvc
 				.perform(post("/greeting").contentType(TestUtil.APPLICATION_JSON_UTF8)
 						.content(TestUtil.convertObjectToJsonBytes(user)))
-				.andExpect(status().isOk()).andExpect(content().string(containsString("Welcome,    !")));
+				.andExpect(status().isOk()).andExpect(content().string(containsString("Welcome !")));
 	}
 
 }

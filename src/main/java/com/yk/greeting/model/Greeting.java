@@ -6,6 +6,7 @@ import com.yk.greeting.entity.User;
  * @author Vykuntarao
  *
  */
+@Deprecated
 public class Greeting {
 
 	private final String content;

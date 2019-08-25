@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 	/**
-	 * Configuration for all the Web Contec  
+	 * Configuration for all the Web Context  
 	 * Redirect the Context path to swagger UI URL
 	 */
 	@Override

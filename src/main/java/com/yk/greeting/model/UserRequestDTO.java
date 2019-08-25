@@ -5,10 +5,10 @@ import javax.validation.constraints.Size;
 public class UserRequestDTO {
 
 	@Size(max = 200, message = "FirstName Me must be less than 200 characters")
-	String firstName;
+	String firstName ;
 
 	@Size(max = 200, message = "LastName Me must be less than 200 characters")
-	String lastName;
+	String lastName ;
 
 	/**
 	 * 

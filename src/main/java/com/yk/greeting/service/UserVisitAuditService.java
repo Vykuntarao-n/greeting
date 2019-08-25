@@ -39,7 +39,6 @@ public class UserVisitAuditService {
 			Optional<User> user = userRepository.findByFirstNameAndLastNameAllIgnoreCase(userReq.getFirstName(), userReq.getLastName());
 			UserVisit userVisit = new UserVisit();
 			if (user.isPresent()) {
-				log.debug("User - " + user.get());
 				userVisit.setUser(user.get());
 				isUserCreated =  true;
 			} else {
@@ -50,8 +49,6 @@ public class UserVisitAuditService {
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
-		System.out.println("isUserCreated" + isUserCreated);
-		
 		return isUserCreated ; 
 	}
 
