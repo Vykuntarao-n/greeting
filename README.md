@@ -8,6 +8,7 @@ Run the Greeting Application
 
 * Run the Maven install from the IDE or maven install from command line. 
 * To Run the greeting micri service as jar use the below command
+
   java -jar greeting-0.0.1-SNAPSHOT.jar
 
 To configure the port  
