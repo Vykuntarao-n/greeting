@@ -1,4 +1,4 @@
-package com.yk.greeting.controller;
+package com.yk.greeting.controller.integrationtest;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.mockito.Mockito.when;
@@ -14,6 +14,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.yk.greeting.controller.GreetingController;
+import com.yk.greeting.controller.TestUtil;
 import com.yk.greeting.model.UserRequestDTO;
 import com.yk.greeting.service.UserVisitAuditService;
 
