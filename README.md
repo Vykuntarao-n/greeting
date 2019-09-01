@@ -13,9 +13,9 @@ Run the Greeting Application
 
 To configure the port  
 * Update the server.port property in the application.properties or the application.yml. application.properties will take the precedence
-* From the command line pass the port number by adding the --server.port= <<Port Number>>
+* From the command line pass the port number by adding the `--server.port= <<Port Number>>`
   
-   java -jar greeting-0.0.1-SNAPSHOT.jar --server.port=8081
+   `java -jar greeting-0.0.1-SNAPSHOT.jar --server.port=8081`
 
 Access the Application
 
@@ -28,7 +28,7 @@ There are two APIs
 Database
 
 * Data will be persisted in the H2 in memory database/
-* To Access the H2 console http://localhost:8080/h2. Change the port to application runnning port. 
+* To Access the H2 console `http://localhost:8080/h2`. Change the port to application runnning port. 
 * Two tables are created USER and USER_VISIT, one to many relaionship on user_id column. 
 
 Persisting 
