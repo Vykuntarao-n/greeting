@@ -22,8 +22,8 @@ Access the Application
 * For API documentation used the Swagger. When request made to the server root `http://localhost:8080/` redirected to the swagger-ui.html page.
 
 There are two APIs
-* /greeting - Accept the POST request with UserRequestDTO as parameter. Persists the User if not exists and add UserVisit Entry.
-* /visits - return the all the statistics of the User Visits.
+* `/greeting` - Accept the POST request with UserRequestDTO as parameter. Persists the User if not exists and add UserVisit Entry.
+* `/visits` - return the all the statistics of the User Visits.
 
 Database
 
