@@ -52,6 +52,14 @@ Docker
 
   `docker pull vykuntarao1/greeting`
 
+Actuator 
+
+* Actuator is mainly used to expose operational information about the running application – health, metrics, info, dump, env, etc. It uses HTTP endpoints or JMX beans to enable us to interact with it. 
+
+* `/health` – Shows application health information (a simple ‘status' when accessed over an unauthenticated connection or full message details when authenticated); it's not sensitive by default
+* `/info` – Displays arbitrary application info; not sensitive by default
+* `/metrics` – Shows ‘metrics' information for the current application; it's also sensitive by default
+* `/trace` – Displays trace information (by default the last few HTTP requests)
 
 ### Reference Documentation
 For further reference, please consider the following sections:
