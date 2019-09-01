@@ -43,6 +43,11 @@ Changing the Base URI
 
 * [Refer the MvcConfig to customize/redirect the base url to application specific URL](https://spring.io/guides/gs/securing-web/)
 
+Docker
+
+* Docker ismage is publised on to the below DockerHub URL `https://hub.docker.com/r/vykuntarao1/greeting`, 
+* To pull the image run the below command
+`docker pull vykuntarao1/greeting`
 
 
 ### Reference Documentation
