@@ -45,8 +45,11 @@ Changing the Base URI
 
 Docker
 
-* Docker ismage is publised on to the below DockerHub URL `https://hub.docker.com/r/vykuntarao1/greeting`
+* Docker ismage is publised on to the below DockerHub URL 
+
+`https://hub.docker.com/r/vykuntarao1/greeting`
 * To pull the image run the below command
+
 `docker pull vykuntarao1/greeting`
 
 
